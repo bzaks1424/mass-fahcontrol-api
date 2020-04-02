@@ -18,4 +18,6 @@ if(nup != "90"):
 print(client.send('option next-unit-percentage'))
 ```
 
+Every output is either a string or a dict. 
+
 The details for how this works are detailed here: https://github.com/FoldingAtHome/fah-control/wiki/3rd-party-FAHClient-API
