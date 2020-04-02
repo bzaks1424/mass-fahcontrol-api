@@ -1,7 +1,9 @@
 import socket
 import select
+###############################################################################
 
-debug = True
+
+###############################################################################
 class ClientController:
 
     ###########################################################################
@@ -15,14 +17,11 @@ class ClientController:
     ###########################################################################
 
     ###########################################################################
-    def __init__(
-        self, address='localhost', port=36330, password=None, retries=5
-    ):
+    def __init__(self, address='localhost', port=36330, password=None):
         self.address = address
         self.port = int(port)
         self.password = password
         self.init_commands = []
-        self.retries = retries
         #######################################################################
         self.__open()
     ###########################################################################
@@ -135,8 +134,8 @@ class ClientController:
         full_msg = ("%s\n" % message)
         byte_msg = full_msg.encode('ASCII')
         if(self.can_write()):
-            if(debug):
-                print("Command %s" % message)
+            # if(debug):
+            #     print("Command %s" % message)
             self.csocket.sendall(byte_msg)
         else:
             print("ERROR - can't write?")
