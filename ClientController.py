@@ -90,6 +90,8 @@ class ClientController:
             end = message.find('\n---\n')
             if(end != -1):
                 data = message[eol + 1: end]
+                if(tokens[2] == "error"):
+                    raise Exception(data)
                 try:
                     return eval(data, {}, {})
                 except Exception as e:
