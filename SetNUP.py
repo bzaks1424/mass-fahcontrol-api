@@ -25,4 +25,9 @@ from ClientController import ClientController
 
 
 client = ClientController(address='192.168.1.245', password='VMware1!')
-client.set_option('next-unit-percentage', '90')
+nup = client.get_options('next-unit-percentage')
+if(int(nup) > 90):
+    print("NUP is currently %s Setting NUP to 90" % nup)
+    client.set_option('next-unit-percentage', '90')
+else:
+    print("NUP is already at %s" % nup)

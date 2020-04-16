@@ -11,13 +11,14 @@ client = ClientController(
 
 Then run commands:
 ```
-nup = client.send('option next-unit-percentage')
-if(nup != "90"):
-    print("NUP is not 90, setting to 90")
-    nup = client.send('option next-unit-percentage 90')
-print(client.send('option next-unit-percentage'))
+nup = client.get_options('next-unit-percentage')
+if(int(nup) > 90):
+    print("NUP is currently %s Setting NUP to 90" % nup)
+    client.set_option('next-unit-percentage', '90')
+else:
+    print("NUP is already at %s" % nup)
 ```
 
-Every output is either a string or a dict. 
+Every output is either a string or a dict.
 
 The details for how this works are detailed here: https://github.com/FoldingAtHome/fah-control/wiki/3rd-party-FAHClient-API

@@ -82,7 +82,7 @@ class ClientController:
         type = self.__validate_type(type)
         if(type != 'all'):
             type = type.upper() + 's'
-            return int(self.get_client_info('System', type)['System'][type])
+            return int(self.get_client_info('System', type))
     ###########################################################################
 
     ###########################################################################
@@ -175,8 +175,7 @@ class ClientController:
                         data[info_category[0]][category_key[0]] = (
                             category_key[1])
         else:
-            data[category] = {}
-            data[category][key] = self.send('get-info %s %s' % (category, key))
+            data = self.send('get-info %s %s' % (category, key))
         return data
     ###########################################################################
 
@@ -196,7 +195,7 @@ class ClientController:
         if(name is None):
             data = self.send('options')
         else:
-            data[name] = self.send('option %s' % name)
+            data = self.send('option %s' % name)
         return data
     ###########################################################################
 
