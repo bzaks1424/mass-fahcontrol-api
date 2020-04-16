@@ -1,6 +1,8 @@
-# import socket
+#!/usr/bin/env python3
+###############################################################################
+from datetime import timedelta
 from ClientController import ClientController
-
+###############################################################################
 
 # hostname = socket.gethostname()
 # hostip = socket.gethostbyname(hostname)
@@ -20,11 +22,7 @@ from ClientController import ClientController
 #             sock.close()
 #         except Exception:
 #             pass
-client = ClientController(address='192.168.1.241', password='VMware1!')
-# client.send('options')
-nup = client.send('option next-unit-percentage')
-if(nup != "90"):
-    print("NUP is not 90, setting to 90")
-    nup = client.send('option next-unit-percentage 90')
-print(client.send('option next-unit-percentage'))
-# client.send('option')
+
+
+client = ClientController(address='192.168.1.245', password='VMware1!')
+client.set_option('next-unit-percentage', '90')
